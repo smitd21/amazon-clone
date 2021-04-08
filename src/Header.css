@@ -1,0 +1,62 @@
+.header {
+  background-color: #131921;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100; /*Nav Always above*/
+}
+.header__logo {
+  width: 100px;
+  object-fit: contain; /*Now the logo image aspect-ratio will never strecth or 
+  increase no matter what even if the screen resizes*/
+  margin: 0 20px;
+  margin-top: 18px;
+  cursor: pointer;
+}
+.header__search {
+  display: flex;
+  flex: 1;
+  /*flex:1 means its saying try and use as much room as you can 
+  i.e max amt of screen after the logo ends*/
+}
+.header__searchInput {
+  height: 12px;
+  padding: 10px;
+  border: none;
+  width: 100%;
+}
+.header__searchIcon {
+  padding: 5px;
+  height: 22px !important;
+  background-color: hsl(34, 58%, 53%);
+}
+.headerNav {
+  display: flex;
+  justify-content: space-evenly;
+}
+.header__link {
+  color: white;
+  text-decoration: none;
+}
+.header__option {
+  display: flex;
+  flex-direction: column;
+  margin: 18px;
+}
+.header__optionLineOne {
+  font-size: 10px;
+}
+.header__optionLineTwo {
+  font-size: 13px;
+  font-weight: 800; /*Increases the boldness*/
+}
+.header__optionBasket {
+  display: flex;
+  align-items: center;
+  margin: 18px;
+}
+.header__basketCount {
+  margin-left: 10px;
+  margin-right: 10px;
+}

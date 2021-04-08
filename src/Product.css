@@ -1,0 +1,36 @@
+.product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 10px;
+  padding: 20px;
+  width: 100%; /*This is important all products shoud take complete width of card*/
+  /* Setting limits is important --> handle resizing */
+  max-height: 400px;
+  min-width: 100px;
+  background-color: white;
+  z-index: 1;
+}
+.product__info {
+  height: 100px;
+  margin-bottom: 15px;
+}
+.product__price {
+  margin-top: 5px;
+}
+.product__rating {
+  display: flex; /*All stars in same line*/
+}
+/* Coz img is the direct child of product so .product > img */
+.product > img {
+  max-height: 200px;
+  width: 100%;
+  object-fit: contain; /*For uniform aspect ratio*/
+  margin-bottom: 15px;
+}
+.product > button {
+  background-color: #f0c14b;
+  border: 1px solid;
+  border-color: #a88734 #9c7e31 #846a29;
+}
