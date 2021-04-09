@@ -2,13 +2,15 @@ import { React, useState, useEffect } from 'react';
 import './Payment.css';
 import { useStateValue } from './StateProvider';
 import CheckoutProduct from './CheckoutProduct';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import CurrencyFormat from 'react-currency-format';
 import { getbasketTotal } from './reducer';
+import axios from './axios';
 
 function Payment() {
   const [{ user, basket }] = useStateValue();
+  const history = useHistory();
 
   const [succeeded, setSucceeded] = useState(false);
   const [processing, setProcessing] = useState('');
@@ -58,6 +60,7 @@ function Payment() {
         setProcessing(false);
 
         history.replaceState('/orders');
+        //While doing payment stuff --> You don't want user to come back to payment page so u just swap by using replace instead of push
       });
   };
 
