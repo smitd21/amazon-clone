@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
 import './Payment.css';
 import { useStateValue } from './StateProvider';
 import CheckoutProduct from './CheckoutProduct';
@@ -14,6 +14,23 @@ function Payment() {
   const [processing, setProcessing] = useState('');
   const [error, setError] = useState(null);
   const [disabled, setDisabled] = useState(true);
+  const [clientSecret, setClientSecret] = useState(true);
+
+  // Will run once this payment component loads and also when the dependency changes
+  useEffect(() => {
+    //generate the special stripe secret which allows us to charge a customer
+
+    //!Important snippet
+    const getClientSecret = async () => {
+      const response = await axios({
+        method: 'post',
+        //*Stripe expects the total in a currencies subunits
+        //*If  dollars it expects you to pass the total amount in cents (thats why *100)
+        url: `/payments/create?total=${getbasketTotal(basket)} * 100`,
+      });
+      setClientSecret(response.data.clientSecret);
+    };
+  }, [basket]);
 
   //* Two powerful hooks to implement our Stripe
   const stripe = useStripe();
@@ -21,9 +38,27 @@ function Payment() {
 
   const handleSubmit = async (e) => {
     // do all the fancy stripe stuff...
-
     e.preventDefault();
     setProcessing(true);
+
+    //a. clientSecret - stripe knows how much we're going to charge
+    //b. payment_method - card
+    const payload = await stripe
+      .confirmCardPayment(clientSecret, {
+        payment_method: {
+          card: elements.getElement(CardElement), //c. find the card element
+        },
+      })
+      .then(({ paymentIntent }) => {
+        // paymentIntent = payment confirmation  -- this is what stripe call it
+
+        //Everything goes good then
+        setSucceeded(true);
+        setError(null);
+        setProcessing(false);
+
+        history.replaceState('/orders');
+      });
   };
 
   const handleChange = (e) => {
