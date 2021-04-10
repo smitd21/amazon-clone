@@ -1,46 +1,60 @@
-import { React, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Payment.css';
 import { useStateValue } from './StateProvider';
 import CheckoutProduct from './CheckoutProduct';
 import { Link, useHistory } from 'react-router-dom';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import CurrencyFormat from 'react-currency-format';
-import { getbasketTotal } from './reducer';
+import { getBasketTotal } from './reducer';
 import axios from './axios';
 
 function Payment() {
-  const [{ user, basket }] = useStateValue();
+  const [{ basket, user }, dispatch] = useStateValue(); //*Our Data Layers used
   const history = useHistory();
-
-  const [succeeded, setSucceeded] = useState(false);
-  const [processing, setProcessing] = useState('');
-  const [error, setError] = useState(null);
-  const [disabled, setDisabled] = useState(true);
-  const [clientSecret, setClientSecret] = useState(true);
-
-  // Will run once this payment component loads and also when the dependency changes
-  useEffect(() => {
-    //generate the special stripe secret which allows us to charge a customer
-
-    //!Important snippet
-    const getClientSecret = async () => {
-      const response = await axios({
-        method: 'post',
-        //*Stripe expects the total in a currencies subunits
-        //*If  dollars it expects you to pass the total amount in cents (thats why *100)
-        url: `/payments/create?total=${getbasketTotal(basket)} * 100`,
-      });
-      setClientSecret(response.data.clientSecret);
-    };
-  }, [basket]);
 
   //* Two powerful hooks to implement our Stripe
   const stripe = useStripe();
   const elements = useElements();
 
-  const handleSubmit = async (e) => {
+  //state
+  const [succeeded, setSucceeded] = useState(false);
+  const [error, setError] = useState(null);
+  const [processing, setProcessing] = useState('');
+  const [disabled, setDisabled] = useState(true);
+  const [clientSecret, setClientSecret] = useState('');
+
+  useEffect(() => {
+    //Create PaymentIntent as soon as the page loads
+    //!Important snippet
+    //*whenever the basket(dependency) changes it will make this request
+    //*and it will update the special stripe secret which allows us to charge a customer the correct amount
+
+    const getClientSecret = async () => {
+      const response = await axios({
+        method: 'post',
+        url: `/payments/create?total=${getBasketTotal(basket) * 100}`,
+        //Stripe expects the total in a currencies subunits
+        //If  dollars it expects you to pass the total amount in cents (thats why *100)
+      });
+      setClientSecret(response.data.clientSecret);
+    };
+
+    getClientSecret();
+  }, [basket]);
+
+  console.log('THE SECRET IS >>>', clientSecret);
+
+  const handleChange = (event) => {
+    // Listen for changes in the CardElement
+    // and display any errors as the customer types their card details
+
+    setDisabled(event.empty); //if event empty go ahead and disable the button
+    setError(event.error ? event.error.message : ''); //if error show error otherwise nothing
+  };
+
+  const handleSubmit = async (event) => {
     // do all the fancy stripe stuff...
-    e.preventDefault();
+    event.preventDefault();
     setProcessing(true);
 
     //a. clientSecret - stripe knows how much we're going to charge
@@ -53,6 +67,7 @@ function Payment() {
       })
       .then(({ paymentIntent }) => {
         // paymentIntent = payment confirmation  -- this is what stripe call it
+        console.log(paymentIntent);
 
         //Everything goes good then
         setSucceeded(true);
@@ -62,14 +77,6 @@ function Payment() {
         history.replaceState('/orders');
         //While doing payment stuff --> You don't want user to come back to payment page so u just swap by using replace instead of push
       });
-  };
-
-  const handleChange = (e) => {
-    // Listen for changes in the CardElement
-    // and display any errors as the customer types their card details
-
-    setDisabled(e.empty); //if event empty go ahead and disable the button
-    setError(e.error ? e.error.message : ''); //if error show error otherwise nothing
   };
 
   return (
@@ -122,7 +129,7 @@ function Payment() {
                 <CurrencyFormat
                   renderText={(value) => <h3>Order Total: {value}</h3>}
                   decimalScale={2}
-                  value={getbasketTotal(basket)}
+                  value={getBasketTotal(basket)}
                   displayType={'text'}
                   thousandSeparator={true}
                   prefix={'$'}

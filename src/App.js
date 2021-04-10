@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Header from './Header';
@@ -5,7 +6,6 @@ import Home from './Home';
 import Checkout from './Checkout';
 import Login from './Login';
 import { useStateValue } from './StateProvider';
-import { useEffect } from 'react';
 import { auth } from './firebase';
 import Payment from './Payment';
 import { loadStripe } from '@stripe/stripe-js';
@@ -39,12 +39,10 @@ function App() {
         });
       }
     });
-    return () => {
-      //Any cleanup operations go in here...
-      unsubscribe();
-    };
   }, []);
+
   console.log('USER IS >>>>', user); //* Check for the user debugging technique
+
   return (
     <Router>
       <div className="app">

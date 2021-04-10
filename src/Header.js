@@ -8,7 +8,7 @@ import { auth } from './firebase';
 // The final thingie useStateValue that we get from StateProvider.js
 
 function Header() {
-  const [{ basket, user }] = useStateValue(); //*Our Data Layers used
+  const [{ basket, user }, dispatch] = useStateValue(); //*Our Data Layers used
 
   //!This is all u need to do for sign out
   const login = () => {

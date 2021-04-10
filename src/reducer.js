@@ -9,7 +9,7 @@ export const initialState = {
 };
 
 // ! Selector for the subtotal
-export const getbasketTotal = (basket) =>
+export const getBasketTotal = (basket) =>
   basket?.reduce((amount, item) => item.price + amount, 0);
 //Accumalating all the prices to the original amount starting with 0
 

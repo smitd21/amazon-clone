@@ -3,7 +3,7 @@ import './Product.css';
 import { useStateValue } from './StateProvider.js';
 
 function Product({ id, title, imageSrc, price, rating }) {
-  const [{}, dispatch] = useStateValue();
+  const [{ basket }, dispatch] = useStateValue();
 
   const addToBasket = () => {
     //Add items to basket....
@@ -34,7 +34,7 @@ function Product({ id, title, imageSrc, price, rating }) {
             // Create array with the rating no of elements in it
             .fill()
             //   Fill it with empty values in this array
-            .map((_) => (
+            .map((_, i) => (
               //  _ means IDC what the value is
               //  Map that many no of stars
               <p>⭐</p>
