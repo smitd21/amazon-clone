@@ -21,7 +21,7 @@ function Payment() {
   const [error, setError] = useState(null);
   const [processing, setProcessing] = useState('');
   const [disabled, setDisabled] = useState(true);
-  const [clientSecret, setClientSecret] = useState('');
+  const [clientSecret, setClientSecret] = useState(true);
 
   useEffect(() => {
     //Create PaymentIntent as soon as the page loads

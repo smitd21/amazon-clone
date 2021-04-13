@@ -1,0 +1,97 @@
+[debug] [2021-04-12T17:31:18.214Z] ----------------------------------------------------------------------
+[debug] [2021-04-12T17:31:18.216Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Admin\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2021-04-12T17:31:18.217Z] CLI Version:   9.6.1
+[debug] [2021-04-12T17:31:18.217Z] Platform:      win32
+[debug] [2021-04-12T17:31:18.217Z] Node Version:  v14.16.0
+[debug] [2021-04-12T17:31:18.218Z] Time:          Mon Apr 12 2021 23:01:18 GMT+0530 (India Standard Time)
+[debug] [2021-04-12T17:31:18.219Z] ----------------------------------------------------------------------
+[debug] [2021-04-12T17:31:18.219Z] 
+[debug] [2021-04-12T17:31:18.226Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-04-12T17:31:18.227Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\Admin\Desktop\amazon-clone
+
+Before we get started, keep in mind:
+
+  * You are initializing in an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[info] i  .firebaserc already has a default project, using clone-1c3e2. 
+[debug] [2021-04-12T17:31:29.855Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/clone-1c3e2 [none]
+[debug] [2021-04-12T17:31:30.344Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/clone-1c3e2 200
+[debug] [2021-04-12T17:31:30.345Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/clone-1c3e2 {"projectId":"clone-1c3e2","projectNumber":"178653151181","displayName":"amazon-clone","name":"projects/clone-1c3e2","resources":{"hostingSite":"clone-1c3e2"},"state":"ACTIVE"}
+[info] 
+=== Database Setup
+[info] i  database: ensuring required API firebasedatabase.googleapis.com is enabled... 
+[debug] [2021-04-12T17:31:30.347Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-04-12T17:31:30.347Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-04-12T17:31:30.621Z] <<< HTTP RESPONSE 200 {"date":"Mon, 12 Apr 2021 17:31:31 GMT","pragma":"no-cache","cache-control":"no-cache, no-store, max-age=0, must-revalidate","expires":"Mon, 01 Jan 1990 00:00:00 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-04-12T17:31:30.685Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/clone-1c3e2/services/firebasedatabase.googleapis.com  
+ 
+[debug] [2021-04-12T17:31:32.622Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Mon, 12 Apr 2021 17:31:32 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[warn] !  database: missing required API firebasedatabase.googleapis.com. Enabling now... 
+[debug] [2021-04-12T17:31:32.624Z] >>> HTTP REQUEST POST https://serviceusage.googleapis.com/v1/projects/clone-1c3e2/services/firebasedatabase.googleapis.com:enable  
+ 
+[debug] [2021-04-12T17:31:34.513Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Mon, 12 Apr 2021 17:31:34 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-04-12T17:31:45.047Z] ----------------------------------------------------------------------
+[debug] [2021-04-12T17:31:45.049Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Admin\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2021-04-12T17:31:45.049Z] CLI Version:   9.6.1
+[debug] [2021-04-12T17:31:45.049Z] Platform:      win32
+[debug] [2021-04-12T17:31:45.050Z] Node Version:  v14.16.0
+[debug] [2021-04-12T17:31:45.051Z] Time:          Mon Apr 12 2021 23:01:45 GMT+0530 (India Standard Time)
+[debug] [2021-04-12T17:31:45.051Z] ----------------------------------------------------------------------
+[debug] [2021-04-12T17:31:45.051Z] 
+[debug] [2021-04-12T17:31:45.058Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-04-12T17:31:45.059Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\Admin\Desktop\amazon-clone
+
+Before we get started, keep in mind:
+
+  * You are initializing in an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[info] i  .firebaserc already has a default project, using clone-1c3e2. 
+[debug] [2021-04-12T17:31:51.586Z] > refreshing access token with scopes: []
+[debug] [2021-04-12T17:31:51.586Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-04-12T17:31:51.826Z] <<< HTTP RESPONSE 200 {"cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","date":"Mon, 12 Apr 2021 17:31:52 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-04-12T17:31:51.867Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/clone-1c3e2 [none]
+[debug] [2021-04-12T17:31:52.212Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/clone-1c3e2 200
+[debug] [2021-04-12T17:31:52.212Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/clone-1c3e2 {"projectId":"clone-1c3e2","projectNumber":"178653151181","displayName":"amazon-clone","name":"projects/clone-1c3e2","resources":{"hostingSite":"clone-1c3e2"},"state":"ACTIVE"}
+[info] 
+=== Hosting Setup
+[info] 
+[info] Your public directory is the folder (relative to your project directory) that
+[info] will contain Hosting assets to be uploaded with firebase deploy. If you
+[info] have a build process for your assets, use your build's output directory.
+[info] 

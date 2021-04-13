@@ -39,6 +39,9 @@ function App() {
         });
       }
     });
+    return () => {
+      unsubscribe();
+    };
   }, []);
 
   console.log('USER IS >>>>', user); //* Check for the user debugging technique

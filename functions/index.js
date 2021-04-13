@@ -18,6 +18,7 @@ app.use(express.json()); //send data and pass in the json format
 app.get('/', (request, response) => response.status(200).send('hello world')); //at '/'
 
 //url: `/payments/create?total=${getbasketTotal(basket) * 100}`, <-- we used in payment.js
+// eslint-disable-next-line
 app.post('/payments/create', async (request, response) => {
   const total = request.query.total; //query param (total amount in subunits)
 
